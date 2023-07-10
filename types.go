@@ -161,6 +161,7 @@ type SACData struct {
 	Body []F
 }
 
+// Header variables and enumerated values
 var (
 	HEADERS = []Header{
 		// 0...4

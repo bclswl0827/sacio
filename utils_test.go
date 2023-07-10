@@ -20,7 +20,7 @@ func TestGetVariableByIndex(t *testing.T) {
 	}
 
 	// Test case: out of range index
-	index = 100
+	index = 1000
 	_, err = getVariableByIndex(index)
 	expectedError := fmt.Errorf("index %d out of range", index)
 	if err == nil || err.Error() != expectedError.Error() {

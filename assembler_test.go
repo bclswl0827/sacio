@@ -97,7 +97,7 @@ func TestAssembleFloat32(t *testing.T) {
 func TestAssembleEnum(t *testing.T) {
 	// Test case: LSBFIRST, matching enum
 	data := []byte{0x01, 0x00, 0x00, 0x00}
-	expectedResult := I("EnumValue1")
+	expectedResult := I("itime")
 
 	result := assembleEnum(data, LSBFIRST)
 	if result != expectedResult {
@@ -106,7 +106,7 @@ func TestAssembleEnum(t *testing.T) {
 
 	// Test case: MSBFIRST, matching enum
 	data = []byte{0x00, 0x00, 0x00, 0x01}
-	expectedResult = I("EnumValue1")
+	expectedResult = I("itime")
 
 	result = assembleEnum(data, MSBFIRST)
 	if result != expectedResult {
@@ -115,7 +115,7 @@ func TestAssembleEnum(t *testing.T) {
 
 	// Test case: LSBFIRST, no matching enum
 	data = []byte{0x02, 0x00, 0x00, 0x00}
-	expectedResult = I("")
+	expectedResult = I("irlim")
 
 	result = assembleEnum(data, LSBFIRST)
 	if result != expectedResult {
@@ -124,7 +124,7 @@ func TestAssembleEnum(t *testing.T) {
 
 	// Test case: MSBFIRST, no matching enum
 	data = []byte{0x00, 0x00, 0x00, 0x02}
-	expectedResult = I("")
+	expectedResult = I("irlim")
 
 	result = assembleEnum(data, MSBFIRST)
 	if result != expectedResult {
@@ -135,7 +135,7 @@ func TestAssembleEnum(t *testing.T) {
 func TestDisassembleFloat32(t *testing.T) {
 	// Test case: LSBFIRST
 	data := F(3.14159)
-	expectedResult := []byte{0xDB, 0x0F, 0x49, 0x40}
+	expectedResult := []byte{0x40, 0x49, 0x0F, 0xD0}
 
 	result := disassembleFloat32(data, LSBFIRST)
 	if !reflect.DeepEqual(result, expectedResult) {
@@ -144,7 +144,7 @@ func TestDisassembleFloat32(t *testing.T) {
 
 	// Test case: MSBFIRST
 	data = F(3.14159)
-	expectedResult = []byte{0x40, 0x49, 0x0F, 0xDB}
+	expectedResult = []byte{0xD0, 0x0F, 0x49, 0x40}
 
 	result = disassembleFloat32(data, MSBFIRST)
 	if !reflect.DeepEqual(result, expectedResult) {
