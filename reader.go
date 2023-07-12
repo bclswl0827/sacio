@@ -50,7 +50,7 @@ func (s *SACData) Read(filename string) error {
 	for i, j := 0, 0; i < HEADER_LENGTH; j++ {
 		header, err := getVariableByIndex(j)
 		if err != nil {
-			panic(err)
+			return err
 		}
 
 		var (
@@ -83,7 +83,7 @@ func (s *SACData) Read(filename string) error {
 		}
 
 		if err != nil {
-			panic(err)
+			return err
 		}
 	}
 
