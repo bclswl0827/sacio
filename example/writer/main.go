@@ -28,8 +28,14 @@ func main() {
 	sacData.SetInfo("TEST-NET", "TEST-STA", "TEST-LOC", "BHZ")
 	sacData.SetBody(testData, SAMPLE_RATE)
 
-	// Write to file
-	err = sacData.Write("./result.sac", sacio.MSBFIRST)
+	// Get data bytes
+	dataBytes, err := sacData.Bytes(sacio.MSBFIRST)
+	if err != nil {
+		panic(err)
+	}
+
+	// Write into file
+	err = sacData.Write("./result.sac", dataBytes)
 	if err != nil {
 		panic(err)
 	}
