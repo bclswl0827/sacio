@@ -29,7 +29,7 @@ func main() {
 	sacData.SetBody(testData, SAMPLE_RATE)
 
 	// Get data bytes
-	dataBytes, err := sacData.Bytes(sacio.MSBFIRST)
+	dataBytes, err := sacData.GetBytes(sacio.MSBFIRST)
 	if err != nil {
 		panic(err)
 	}
