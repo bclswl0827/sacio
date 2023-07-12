@@ -1,9 +1,6 @@
 package sacio
 
 func (s *SACData) SetBody(series []float32, sampleRate int) error {
-	s.B = F(0.0)
-	s.E = F(float32(len(series)) / float32(sampleRate))
-
 	s.SCALE = 1.0
 	s.NPTS = N(len(series))
 	s.DELTA = F(1.0 / float32(sampleRate))

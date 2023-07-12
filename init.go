@@ -21,5 +21,6 @@ func (s *SACData) Init() error {
 		}
 	}
 
+	s.NVHDR = N(6) // Must be 6
 	return nil
 }

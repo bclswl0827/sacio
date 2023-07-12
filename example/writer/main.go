@@ -24,7 +24,11 @@ func main() {
 	sacData.Init()
 
 	// Set new header fields
-	sacData.SetTime(time.Now().UTC().Add(time.Duration(-TIME_SPAN) * time.Second))
+	var (
+		duration  = time.Duration(TIME_SPAN)
+		startTime = time.Now().UTC().Add(time.Duration(-TIME_SPAN) * time.Second)
+	)
+	sacData.SetTime(startTime, duration)
 	sacData.SetInfo("TEST-NET", "TEST-STA", "TEST-LOC", "BHZ")
 	sacData.SetBody(testData, SAMPLE_RATE)
 

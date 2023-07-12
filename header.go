@@ -5,19 +5,22 @@ import (
 	"time"
 )
 
-func (s *SACData) SetTime(t time.Time) error {
-	timeField, err := getParsedTimeField(t)
+func (s *SACData) SetTime(startTime time.Time, duration time.Duration) error {
+	timeField, err := getParsedTimeField(startTime)
 	if err != nil {
 		return err
 	}
 
-	s.NVHDR = N(6) // Must be 6
+	s.B = F(0.0)
+	s.E = F(float32(duration.Seconds()))
+
 	s.NZYEAR = N(timeField.Year)
 	s.NZJDAY = N(timeField.Days)
 	s.NZHOUR = N(timeField.Hour)
 	s.NZMIN = N(timeField.Min)
 	s.NZSEC = N(timeField.Sec)
 	s.NZMSEC = N(timeField.Msec)
+
 	return nil
 }
 
