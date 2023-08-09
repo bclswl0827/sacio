@@ -2,7 +2,7 @@ package sacio
 
 import "reflect"
 
-func (s *SACData) GetBytes(bitOrder int) ([]byte, error) {
+func (s *SACData) Encode(bitOrder int) ([]byte, error) {
 	buf := make([]byte, HEADER_LENGTH+len(s.Body)*4)
 	values := reflect.ValueOf(s).Elem()
 

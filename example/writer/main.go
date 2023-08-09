@@ -25,15 +25,15 @@ func main() {
 
 	// Set new header fields
 	var (
-		duration  = time.Duration(TIME_SPAN)
 		startTime = time.Now().UTC().Add(time.Duration(-TIME_SPAN) * time.Second)
+		duration  = time.Duration(TIME_SPAN)
 	)
 	sacData.SetTime(startTime, duration)
 	sacData.SetInfo("TEST-NET", "TEST-STA", "TEST-LOC", "BHZ")
 	sacData.SetBody(testData, SAMPLE_RATE)
 
 	// Get data bytes
-	dataBytes, err := sacData.GetBytes(sacio.MSBFIRST)
+	dataBytes, err := sacData.Encode(sacio.MSBFIRST)
 	if err != nil {
 		panic(err)
 	}
