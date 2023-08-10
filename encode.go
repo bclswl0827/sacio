@@ -19,22 +19,22 @@ func (s *SACData) Encode(bitOrder int) ([]byte, error) {
 		}
 
 		var (
-			head = i
-			tail = i + header.Width
+			start = i
+			end   = i + header.Width
 		)
 		i += header.Width
 
 		switch header.DataType {
 		case "F":
-			copy(buf[head:tail], disassembleFloat32(result.(F), bitOrder))
+			copy(buf[start:end], disassembleFloat32(result.(F), bitOrder))
 		case "N":
-			copy(buf[head:tail], disassembleInt32(result.(N), bitOrder))
+			copy(buf[start:end], disassembleInt32(result.(N), bitOrder))
 		case "L":
-			copy(buf[head:tail], disassembleBool(result.(L), bitOrder))
+			copy(buf[start:end], disassembleBool(result.(L), bitOrder))
 		case "I":
-			copy(buf[head:tail], disassembleEnum(result.(I), bitOrder))
+			copy(buf[start:end], disassembleEnum(result.(I), bitOrder))
 		case "K":
-			copy(buf[head:tail], disassembleString(result.(K)))
+			copy(buf[start:end], disassembleString(result.(K)))
 		}
 	}
 

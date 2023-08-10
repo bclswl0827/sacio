@@ -4,8 +4,8 @@ import (
 	"os"
 )
 
-func (s *SACData) Write(filename string, dataBytes []byte) error {
-	file, err := os.Create(filename)
+func (s *SACData) Write(filePath string, dataBytes []byte) error {
+	file, err := os.Create(filePath)
 	if err != nil {
 		return err
 	}

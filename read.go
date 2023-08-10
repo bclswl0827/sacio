@@ -7,14 +7,14 @@ import (
 )
 
 // Read SAC file to structured SACData
-func (s *SACData) Read(filename string) error {
+func (s *SACData) Read(filePath string) error {
 	type SACRawData struct {
 		BitOrder  int
 		DataBytes []byte
 	}
 
 	// Open SAC file
-	file, err := os.Open(filename)
+	file, err := os.Open(filePath)
 	if err != nil {
 		return err
 	}
