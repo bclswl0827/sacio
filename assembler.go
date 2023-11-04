@@ -46,7 +46,7 @@ func assembleFloat32(data []byte, bitOrder int) F {
 // assembleEnum assembles enums to string from 4 bytes
 func assembleEnum(data []byte, bitOrder int) I {
 	bits := assembleInt32(data, bitOrder)
-	for _, v := range ENUMS {
+	for _, v := range enums {
 		if v.Index == int(bits) {
 			return I(v.Value)
 		}
@@ -106,7 +106,7 @@ func disassembleString(data K) []byte {
 
 // disassembleEnum disassembles a enum to 4 bytes
 func disassembleEnum(data I, bitOrder int) []byte {
-	for _, v := range ENUMS {
+	for _, v := range enums {
 		if v.Value == string(data) {
 			return disassembleInt32(N(v.Index), bitOrder)
 		}

@@ -10,7 +10,7 @@ import (
 func TestGetVariableByIndex(t *testing.T) {
 	// Test case: valid index
 	index := 0
-	expectedHeader := &HEADERS[index]
+	expectedHeader := &headers[index]
 	header, err := getVariableByIndex(index)
 	if err != nil {
 		t.Errorf("Expected no error, got: %s", err.Error())
@@ -31,7 +31,7 @@ func TestGetVariableByIndex(t *testing.T) {
 func TestGetParsedTimeField(t *testing.T) {
 	// Test case: valid time
 	inputTime := time.Now()
-	expectedTimeField := &Time{
+	expectedTimeField := &sacTime{
 		Year: inputTime.Year(),
 		Hour: inputTime.Hour(),
 		Min:  inputTime.Minute(),

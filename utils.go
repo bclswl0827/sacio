@@ -7,17 +7,17 @@ import (
 )
 
 // getVariableByIndex returns header variable by index
-func getVariableByIndex(index int) (*Header, error) {
-	if index > len(HEADERS)-1 {
+func getVariableByIndex(index int) (*sacHeader, error) {
+	if index > len(headers)-1 {
 		return nil, fmt.Errorf("index %d out of range", index)
 	}
 
-	return &HEADERS[index], nil
+	return &headers[index], nil
 }
 
 // getParsedTimeField returns parsed time field
-func getParsedTimeField(t time.Time) (*Time, error) {
-	var timeField Time
+func getParsedTimeField(t time.Time) (*sacTime, error) {
+	var timeField sacTime
 
 	// Fill basic time fields
 	timeField.Year = t.Year()

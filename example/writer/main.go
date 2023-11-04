@@ -3,6 +3,7 @@ package main
 import (
 	crytporand "crypto/rand"
 	"encoding/binary"
+	"fmt"
 	"math"
 	"time"
 
@@ -43,6 +44,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+	fmt.Println("Write success!")
 }
 
 func getRandomData(length int, min, max float32) ([]float32, error) {
